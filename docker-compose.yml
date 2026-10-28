@@ -1,0 +1,11 @@
+services:
+  panel:
+    build: .
+    container_name: vpanel
+    restart: unless-stopped
+    env_file: .env
+    # host network: هر اینباند پورت خودش را روی سرور باز می‌کند (مثل Sanaei / 3x-ui)
+    network_mode: host
+    volumes:
+      - ./data:/data
+      - /etc/letsencrypt:/etc/letsencrypt:ro
